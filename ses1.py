@@ -13,8 +13,6 @@ path = args.path
 
 
 fd = open(path) 
-dest = open(path+"_out", "wb")
-salida = csv.writer(dest)
 wordList = []
 ult = []
 
@@ -37,8 +35,8 @@ ydata, aaaa= map(list, zip(*wordList))
 ydata = list(map(int, ydata))
 xdata = list(range(len(ydata)))
 
-xdata= xdata[10:1000]
-ydata= ydata[10:1000]
+xdata= xdata[10:]
+ydata= ydata[10:]
 
 
 #for line in wordList:
@@ -48,11 +46,11 @@ ydata= ydata[10:1000]
 		#print(np.log10(float(line[0])))
 #	cont=cont+1
 
-plt.plot(xdata, ydata, 'b-', label='data')
+plt.plot(xdata, ydata, 'b-', label='Word frequency distribution NOVELS')
 plt.yscale('log')
 plt.xscale('log')
 popt, pcov = curve_fit(func, xdata, ydata, p0=(1.0,15.0, 100.0), maxfev=1500)
-plt.plot(xdata, func(xdata, *popt), 'r-', label='fit')
+plt.plot(xdata, func(xdata, *popt), 'r-', label='fit curve')
 
 
 plt.xlabel('x')
@@ -61,11 +59,5 @@ plt.legend()
 plt.show()
 for num in popt:
 	print(num)
-for line in wordList:
-	salida.writerow(line)
-
-salida.writerow(ult[0])
-
-dest.close()
 fd.close()
  
