@@ -1,0 +1,16 @@
+set MATERIALS := ACERO, CHATARRA;
+
+param costes:= ACERO 3
+               CHATARRA 6;
+
+param disponibles:= ACERO 4
+					CHATARRA 7;
+param horasMat:= ACERO 3;
+				CHATARRA 2;
+
+param pedido:= 5;
+
+param propLim:= 7/8;
+
+param horasDisp:= 18;
+					
